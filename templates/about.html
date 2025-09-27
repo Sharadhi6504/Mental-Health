@@ -1,0 +1,208 @@
+{% extends "base.html" %}
+
+{% block title %}About Mental Health Detection System{% endblock %}
+
+{% block content %}
+<div class="main-container">
+    <div class="text-center mb-5">
+        <h1 class="text-gradient mb-4" style="font-size: 3rem; font-weight: 800;">
+            <i class="fas fa-info-circle me-3" style="color: #06d6a0;"></i>About MindScope AI
+            <span class="d-block fs-5 text-muted mt-2">Understanding Your Mental Well-being</span>
+        </h1>
+        <p class="lead" style="font-size: 1.2rem; color: #6b7280; max-width: 700px; margin: 0 auto;">
+            Discover how our advanced AI technology analyzes your thoughts and emotions to provide 
+            personalized mental wellness insights and support, with special focus on Indian cultural context.
+        </p>
+    </div>
+
+    <div class="row">
+        <!-- How It Works -->
+        <div class="col-lg-8 mx-auto">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h4 class="card-title text-primary">
+                        <i class="fas fa-cogs me-2"></i>How It Works
+                    </h4>
+                    
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <h6><i class="fas fa-edit me-2 text-primary"></i>Text Analysis</h6>
+                            <p class="text-muted">We analyze the language patterns, sentiment, and emotional indicators in your text using natural language processing techniques.</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h6><i class="fas fa-search me-2 text-primary"></i>Feature Extraction</h6>
+                            <p class="text-muted">Our system extracts various linguistic and psychological features from your writing, including word choice, sentiment scores, and emotional tone.</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h6><i class="fas fa-brain me-2 text-primary"></i>Machine Learning</h6>
+                            <p class="text-muted">A trained machine learning model processes these features to assess potential mental health indicators based on patterns in the text.</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h6><i class="fas fa-lightbulb me-2 text-primary"></i>Recommendations</h6>
+                            <p class="text-muted">Based on the analysis, we provide personalized recommendations and resources to support your mental wellbeing.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technology Stack -->
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h4 class="card-title text-success">
+                        <i class="fas fa-code me-2"></i>Technology Stack
+                    </h4>
+                    
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <h6>Machine Learning</h6>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check text-success me-2"></i>Scikit-learn Random Forest</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Natural Language Processing</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Sentiment Analysis (TextBlob)</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Feature Engineering</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Web Application</h6>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check text-success me-2"></i>Python Flask Backend</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Bootstrap 5 Frontend</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Chart.js Visualizations</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Responsive Design</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Indian Context Features -->
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h4 class="card-title text-warning">
+                        <i class="fas fa-flag me-2"></i>Indian Context Integration
+                    </h4>
+                    
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <h6>Cultural Sensitivity</h6>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-om text-warning me-2"></i>Traditional healing practices</li>
+                                <li><i class="fas fa-praying-hands text-warning me-2"></i>Yoga and meditation integration</li>
+                                <li><i class="fas fa-leaf text-warning me-2"></i>Ayurvedic wellness approach</li>
+                                <li><i class="fas fa-users text-warning me-2"></i>Family and community support</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Healthcare System</h6>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-hospital text-warning me-2"></i>Government hospital resources</li>
+                                <li><i class="fas fa-shield-alt text-warning me-2"></i>Ayushman Bharat coverage</li>
+                                <li><i class="fas fa-phone text-warning me-2"></i>Indian crisis helplines</li>
+                                <li><i class="fas fa-language text-warning me-2"></i>Multi-language support</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Important Disclaimers -->
+            <div class="alert alert-warning">
+                <h5 class="alert-heading">
+                    <i class="fas fa-exclamation-triangle me-2"></i>Important Disclaimers
+                </h5>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6>Not a Medical Diagnosis</h6>
+                        <p class="small">This tool provides insights based on text analysis but cannot replace professional medical diagnosis or treatment. Always consult qualified healthcare providers for mental health concerns.</p>
+                        
+                        <h6>Educational Purpose</h6>
+                        <p class="small">This system is designed for educational and awareness purposes. It should be used as a supplement to, not a replacement for, professional mental health care.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <h6>Privacy & Data</h6>
+                        <p class="small">Your text input is analyzed in real-time and is not stored on our servers. We prioritize your privacy and confidentiality.</p>
+                        
+                        <h6>Accuracy Limitations</h6>
+                        <p class="small">While our model is trained on various text patterns, it may not capture all nuances of human emotion and mental state. Professional assessment is always recommended.</p>
+                    </div>
+                </div>
+                
+                <hr>
+                <h6><i class="fas fa-heart text-danger me-2"></i>Crisis Situations</h6>
+                <p class="mb-0">If you're experiencing a mental health crisis or thoughts of self-harm, please contact emergency services or the National Mental Health Helpline (08046110007) immediately.</p>
+            </div>
+
+            <!-- System Features -->
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h4 class="card-title text-info">
+                        <i class="fas fa-star me-2"></i>System Features
+                    </h4>
+                    
+                    <div class="row mt-3">
+                        <div class="col-md-4 text-center mb-3">
+                            <i class="fas fa-shield-alt text-primary" style="font-size: 2rem;"></i>
+                            <h6 class="mt-2">Privacy First</h6>
+                            <p class="small text-muted">Your data is processed securely and never stored</p>
+                        </div>
+                        <div class="col-md-4 text-center mb-3">
+                            <i class="fas fa-brain text-success" style="font-size: 2rem;"></i>
+                            <h6 class="mt-2">AI-Powered</h6>
+                            <p class="small text-muted">Advanced machine learning for text analysis</p>
+                        </div>
+                        <div class="col-md-4 text-center mb-3">
+                            <i class="fas fa-mobile-alt text-warning" style="font-size: 2rem;"></i>
+                            <h6 class="mt-2">Responsive Design</h6>
+                            <p class="small text-muted">Works seamlessly on all devices</p>
+                        </div>
+                        <div class="col-md-4 text-center mb-3">
+                            <i class="fas fa-chart-bar text-info" style="font-size: 2rem;"></i>
+                            <h6 class="mt-2">Detailed Analysis</h6>
+                            <p class="small text-muted">Comprehensive breakdown of text features</p>
+                        </div>
+                        <div class="col-md-4 text-center mb-3">
+                            <i class="fas fa-lightbulb text-danger" style="font-size: 2rem;"></i>
+                            <h6 class="mt-2">Personalized Tips</h6>
+                            <p class="small text-muted">Tailored recommendations based on analysis</p>
+                        </div>
+                        <div class="col-md-4 text-center mb-3">
+                            <i class="fas fa-heart text-primary" style="font-size: 2rem;"></i>
+                            <h6 class="mt-2">Resource Library</h6>
+                            <p class="small text-muted">Extensive mental health resource collection</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Development Info -->
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title text-secondary">
+                        <i class="fas fa-code-branch me-2"></i>Development & Research
+                    </h4>
+                    
+                    <p>This mental health detection system was developed using machine learning techniques and natural language processing to analyze text for potential mental health indicators, with special consideration for Indian cultural context.</p>
+                    
+                    <h6>Model Training</h6>
+                    <p class="text-muted">Our machine learning model was trained on synthetic text data representing various mental health states, from positive wellbeing to concerning patterns that might indicate the need for professional support.</p>
+                    
+                    <h6>Cultural Adaptation</h6>
+                    <p class="text-muted">The system integrates traditional Indian healing practices, yoga, meditation, and Ayurveda alongside modern mental health approaches to provide culturally relevant support.</p>
+                    
+                    <h6>Continuous Improvement</h6>
+                    <p class="text-muted">We continuously work to improve our algorithms and expand our resource database to provide better support and more accurate insights.</p>
+                    
+                    <h6>Ethical Considerations</h6>
+                    <p class="text-muted">This tool is designed with ethical AI principles in mind, prioritizing user privacy, avoiding stigmatization, and emphasizing the importance of professional mental health care.</p>
+                    
+                    <div class="alert alert-info mt-3">
+                        <h6 class="alert-heading">Research Support</h6>
+                        <p class="mb-0">This project demonstrates the potential of AI in mental health awareness and early identification of concerning patterns within Indian cultural context. However, it should always be used in conjunction with professional mental health services, not as a replacement for them.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

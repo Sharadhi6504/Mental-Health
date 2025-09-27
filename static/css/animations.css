@@ -1,0 +1,252 @@
+/* MindScope AI - Advanced CSS Animations and Effects */
+
+/* Floating animation for feature icons */
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    25% { transform: translateY(-10px) rotate(2deg); }
+    50% { transform: translateY(-5px) rotate(0deg); }
+    75% { transform: translateY(-8px) rotate(-2deg); }
+}
+
+.feature-icon {
+    animation: float 6s ease-in-out infinite;
+}
+
+.feature-icon:nth-child(2) {
+    animation-delay: -2s;
+}
+
+.feature-icon:nth-child(3) {
+    animation-delay: -4s;
+}
+
+/* Gradient text animation */
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.text-gradient {
+    background: linear-gradient(270deg, #06d6a0, #6366f1, #8b5cf6, #06d6a0);
+    background-size: 400% 400%;
+    animation: gradientShift 8s ease infinite;
+}
+
+/* Pulse animation for important elements */
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(6, 214, 160, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(6, 214, 160, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(6, 214, 160, 0); }
+}
+
+.btn-primary:hover {
+    animation: pulse 2s infinite;
+}
+
+/* Shake animation for form validation */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+.form-control.error {
+    animation: shake 0.5s ease-in-out;
+    border-color: #ef4444 !important;
+}
+
+/* Slide in animation for cards */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card {
+    animation: slideInUp 0.6s ease-out forwards;
+}
+
+.card:nth-child(2) { animation-delay: 0.1s; }
+.card:nth-child(3) { animation-delay: 0.2s; }
+.card:nth-child(4) { animation-delay: 0.3s; }
+
+/* Loading spinner enhancement */
+@keyframes spin-scale {
+    0% { transform: rotate(0deg) scale(1); }
+    50% { transform: rotate(180deg) scale(1.1); }
+    100% { transform: rotate(360deg) scale(1); }
+}
+
+.loading .spinner-border {
+    animation: spin-scale 1s linear infinite;
+    border-color: #06d6a0 transparent #06d6a0 transparent;
+}
+
+/* Hover effects for interactive elements */
+.list-group-item {
+    position: relative;
+    overflow: hidden;
+}
+
+.list-group-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(6, 214, 160, 0.1), transparent);
+    transition: left 0.6s ease;
+}
+
+.list-group-item:hover::before {
+    left: 100%;
+}
+
+/* Morphing background for body */
+@keyframes morphBackground {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+body {
+    background: linear-gradient(135deg, #0f0f23, #1a1a2e, #16213e, #0f3460, #1a1a2e);
+    background-size: 300% 300%;
+    animation: morphBackground 20s ease infinite;
+}
+
+/* Glowing effect for important alerts */
+@keyframes glow {
+    0%, 100% { box-shadow: 0 0 5px rgba(239, 68, 68, 0.5); }
+    50% { box-shadow: 0 0 20px rgba(239, 68, 68, 0.8), 0 0 30px rgba(239, 68, 68, 0.6); }
+}
+
+.alert-danger {
+    animation: glow 2s ease-in-out infinite;
+}
+
+/* Typewriter effect for main heading */
+@keyframes typewriter {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink {
+    0%, 50% { border-color: transparent; }
+    51%, 100% { border-color: #06d6a0; }
+}
+
+.typewriter {
+    overflow: hidden;
+    border-right: 3px solid #06d6a0;
+    white-space: nowrap;
+    animation: 
+        typewriter 3s steps(20) 1s forwards,
+        blink 1s infinite;
+}
+
+/* Floating particles effect */
+.particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: radial-gradient(circle, #06d6a0 0%, transparent 70%);
+    border-radius: 50%;
+    opacity: 0.6;
+    animation: floatParticle 10s linear infinite;
+}
+
+@keyframes floatParticle {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.6;
+    }
+    90% {
+        opacity: 0.6;
+    }
+    100% {
+        transform: translateY(-10vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Responsive enhancements */
+@media (max-width: 768px) {
+    .typewriter {
+        animation: none;
+        border-right: none;
+        white-space: normal;
+    }
+    
+    .feature-icon {
+        animation-duration: 3s;
+    }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Focus states for better accessibility */
+.btn:focus,
+.form-control:focus,
+.nav-link:focus {
+    outline: 2px solid #06d6a0;
+    outline-offset: 2px;
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar-track {
+    background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #06d6a0 0%, #0891b2 100%);
+    box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Enhanced card hover effects */
+.card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(6, 214, 160, 0.05), rgba(99, 102, 241, 0.05));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    border-radius: 20px;
+}
+
+.card:hover::after {
+    opacity: 1;
+}

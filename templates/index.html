@@ -1,0 +1,494 @@
+{% extends "base.html" %}
+
+{% block title %}Mental Health Detection - Home{% endblock %}
+
+{% block content %}
+<div class="main-container">
+    <!-- Header -->
+    <div class="text-center mb-5">
+        <div class="position-relative">
+            <h1 class="text-gradient mb-4" style="font-size: 3.5rem; font-weight: 800;">
+                <i class="fas fa-brain me-3" style="color: #06d6a0;"></i>MindScope AI
+                <span class="fs-6 text-muted d-block mt-2" style="font-weight: 500;">AI-Powered Mental Health Assistant for Indians</span>
+            </h1>
+            <p class="lead" style="font-size: 1.25rem; color: #6b7280; max-width: 700px; margin: 0 auto;">
+                Advanced AI-powered mental wellness insights specially designed for Indians, 
+                combining modern psychology with traditional Indian healing practices.
+            </p>
+            <p class="text-muted mt-2">
+                <i class="fas fa-language me-1"></i>
+                Supports English, Hindi, and regional Indian languages
+            </p>
+        </div>
+        
+        <div class="row mt-5">
+            <div class="col-md-4 mb-4">
+                <div class="feature-icon">
+                    <i class="fas fa-user-shield"></i>
+                </div>
+                <h5 style="font-weight: 700; color: #374151;">Complete Privacy</h5>
+                <p class="text-muted">Your data is processed securely and never stored on our servers</p>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="feature-icon" style="background: linear-gradient(135deg, #ff9933 0%, #138808 50%, #ffffff 100%);">
+                    <i class="fas fa-om" style="color: #000080;"></i>
+                </div>
+                <h5 style="font-weight: 700; color: #374151;">Indian Culture Focused</h5>
+                <p class="text-muted">Modern AI integrated with Yoga, Ayurveda, and traditional healing practices</p>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="feature-icon" style="background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);">
+                    <i class="fas fa-hands-helping"></i>
+                </div>
+                <h5 style="font-weight: 700; color: #374151;">Personalized Care</h5>
+                <p class="text-muted">Tailored recommendations based on your cultural background and preferences</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Input Form -->
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card">
+                <div class="card-body p-4">
+                    <h4 class="card-title mb-4" style="font-weight: 700; color: #374151;">
+                        <i class="fas fa-comment-dots me-2 text-primary"></i>Share Your Feelings
+                    </h4>
+                    
+                    <form id="analysisForm">
+                        <div class="mb-4">
+                            <label for="userText" class="form-label" style="font-weight: 600; color: #374151;">
+                                How are you feeling today? Express yourself freely:
+                            </label>
+                            <textarea 
+                                class="form-control" 
+                                id="userText" 
+                                rows="6" 
+                                placeholder="Feel free to express any thoughts, feelings, or concerns in English, Hindi, or your preferred Indian language. The more you share, the better our AI can understand and support you. Example: 'I've been feeling overwhelmed lately with work stress and haven't been sleeping well. Sometimes I worry about my future...'"
+                                maxlength="2000"
+                                style="font-size: 1.1rem; line-height: 1.6; min-height: 160px; font-family: 'Inter', 'Noto Sans Devanagari', sans-serif;"
+                            ></textarea>
+                            <div class="form-text d-flex justify-content-between align-items-center mt-2">
+                                <span class="text-muted">
+                                    <i class="fas fa-lock me-1"></i>Completely private & secure
+                                </span>
+                                <span>
+                                    <span id="charCount" style="font-weight: 600;">0</span>/2000 characters
+                                </span>
+                            </div>
+                        </div>
+                        
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label" style="font-weight: 600; color: #374151;">
+                                    <i class="fas fa-map-marker-alt me-1"></i>Your Region (Optional):
+                                </label>
+                                <select class="form-control" id="regionSelect">
+                                    <option value="">Select Region</option>
+                                    <option value="north">North India</option>
+                                    <option value="south">South India</option>
+                                    <option value="west">West India</option>
+                                    <option value="east">East India</option>
+                                    <option value="northeast">Northeast India</option>
+                                    <option value="central">Central India</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label" style="font-weight: 600; color: #374151;">
+                                    <i class="fas fa-language me-1"></i>Language Preference:
+                                </label>
+                                <select class="form-control" id="languageSelect">
+                                    <option value="en">English (Default)</option>
+                                    <option value="hi">हिंदी (Hindi)</option>
+                                    <option value="hi-en">Hindi + English (Mixed)</option>
+                                    <option value="ta">தமிழ் (Tamil)</option>
+                                    <option value="te">తెలుగు (Telugu)</option>
+                                    <option value="bn">বাংলা (Bengali)</option>
+                                    <option value="gu">ગુજરાતી (Gujarati)</option>
+                                    <option value="kn">ಕನ್ನಡ (Kannada)</option>
+                                    <option value="ml">മലയാളം (Malayalam)</option>
+                                    <option value="mr">मराठी (Marathi)</option>
+                                    <option value="pa">ਪੰਜਾਬੀ (Punjabi)</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-lg" id="analyzeBtn" style="font-size: 1.1rem; padding: 16px 32px; background: linear-gradient(135deg, #06d6a0 0%, #0891b2 100%);">
+                                <span class="btn-text">
+                                    <i class="fas fa-sparkles me-2"></i>Analyze with AI
+                                </span>
+                                <span class="loading">
+                                    <div class="spinner-border spinner-border-sm me-2" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                    Analyzing your thoughts...
+                                </span>
+                            </button>
+                        </div>
+                        
+                        <div class="text-center mt-3">
+                            <small class="text-muted">
+                                <i class="fas fa-info-circle me-1"></i>
+                                Analysis typically takes 1-2 seconds. Your privacy is our priority.
+                            </small>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Results Section -->
+    <div id="resultsSection" class="mt-5" style="display: none;">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="card" id="resultsCard">
+                    <div class="card-body p-4">
+                        <h4 class="card-title mb-4" style="font-weight: 700; color: #374151;">
+                            <i class="fas fa-chart-line me-2" style="color: #06d6a0;"></i>Your Wellness Analysis
+                        </h4>
+                        
+                        <!-- Prediction Result -->
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="me-3">
+                                        <div id="riskBadge" class="badge fs-6 px-3 py-2">
+                                            <i id="riskIcon" class="fas fa-heart me-1"></i>
+                                            <span id="predictionText"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-2">
+                                    <small class="text-muted">Risk Level:</small>
+                                    <span id="riskLevel" class="fw-bold ms-1"></span>
+                                </div>
+                                <div class="mb-2">
+                                    <small class="text-muted">Confidence:</small>
+                                    <span id="confidence" class="fw-bold ms-1"></span>
+                                </div>
+                                <div>
+                                    <small class="text-muted">Analysis Time:</small>
+                                    <span id="timestamp" class="fw-bold ms-1"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="text-center">
+                                    <canvas id="confidenceChart" width="200" height="200"></canvas>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Recommendations -->
+                        <div class="mb-4">
+                            <h5 class="mb-3" style="font-weight: 700; color: #374151;">
+                                <i class="fas fa-lightbulb me-2" style="color: #f59e0b;"></i>Personalized Wellness Plan
+                            </h5>
+                            <div id="recommendationsList" class="list-group list-group-flush">
+                            </div>
+                        </div>
+
+                        <!-- Text Features Analysis -->
+                        <div class="mb-4">
+                            <h5 class="mb-3" style="font-weight: 700; color: #374151;">
+                                <i class="fas fa-microscope me-2" style="color: #6366f1;"></i>AI Analysis Breakdown
+                            </h5>
+                            <div class="row" id="featuresAnalysis">
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="d-flex flex-wrap gap-2">
+                            <button class="btn btn-outline-primary" onclick="window.location.href='/resources'">
+                                <i class="fas fa-heart me-1"></i>Find Resources
+                            </button>
+                            <button class="btn btn-outline-success" onclick="analyzeAgain()">
+                                <i class="fas fa-redo me-1"></i>New Analysis
+                            </button>
+                            <button class="btn btn-outline-info" onclick="shareResults()">
+                                <i class="fas fa-share me-1"></i>Share (Anonymous)
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Emergency Resources for India -->
+    <div class="alert alert-info mt-4" id="emergencyAlert" style="display: none;">
+        <h5 class="alert-heading">
+            <i class="fas fa-exclamation-triangle me-2"></i>Important Resources
+        </h5>
+        <p class="mb-2">If you're experiencing thoughts of self-harm or suicide, please reach out for immediate help:</p>
+        <div class="row">
+            <div class="col-md-6">
+                <ul class="mb-2">
+                    <li><strong>National Mental Health Helpline:</strong> <a href="tel:08046110007" class="alert-link">08046110007</a></li>
+                    <li><strong>Sneha India:</strong> <a href="tel:02225521111" class="alert-link">022-25521111</a> (Mumbai)</li>
+                    <li><strong>Sumaitri:</strong> <a href="tel:01123389090" class="alert-link">011-23389090</a> (Delhi)</li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <ul class="mb-2">
+                    <li><strong>Medical Emergency:</strong> <a href="tel:102" class="alert-link">102</a></li>
+                    <li><strong>Roshni Helpline:</strong> <a href="tel:04066202000" class="alert-link">040-66202000</a> (Hyderabad)</li>
+                    <li><strong>Maithri:</strong> <a href="tel:04842540530" class="alert-link">0484-2540530</a> (Kochi)</li>
+                </ul>
+            </div>
+        </div>
+        <p class="mb-0">
+            <strong>Remember:</strong> You are not alone, and help is available. Your life has value. 
+            Please also reach out to family and friends for support.
+        </p>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+let confidenceChart = null;
+
+$(document).ready(function() {
+    // Character count functionality
+    $('#userText').on('input', function() {
+        const length = $(this).val().length;
+        $('#charCount').text(length);
+        
+        if (length > 1800) {
+            $('#charCount').addClass('text-warning');
+        } else if (length > 2000) {
+            $('#charCount').addClass('text-danger');
+        } else {
+            $('#charCount').removeClass('text-warning text-danger');
+        }
+    });
+
+    // Form submission
+    $('#analysisForm').on('submit', function(e) {
+        e.preventDefault();
+        analyzeText();
+    });
+});
+
+function analyzeText() {
+    const text = $('#userText').val().trim();
+    
+    if (text.length < 10) {
+        alert('Please provide more detailed text (at least 10 characters) for accurate analysis.');
+        return;
+    }
+    
+    // Show loading state
+    $('#analyzeBtn .btn-text').hide();
+    $('#analyzeBtn .loading').show();
+    $('#analyzeBtn').prop('disabled', true);
+    
+    // Hide previous results
+    $('#resultsSection').hide();
+    $('#emergencyAlert').hide();
+    
+    // Make API call
+    $.ajax({
+        url: '/analyze',
+        method: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({ text: text }),
+        success: function(response) {
+            displayResults(response);
+        },
+        error: function(xhr, status, error) {
+            let errorMsg = 'An error occurred during analysis.';
+            if (xhr.responseJSON && xhr.responseJSON.error) {
+                errorMsg = xhr.responseJSON.error;
+            }
+            alert('Error: ' + errorMsg);
+        },
+        complete: function() {
+            // Reset button state
+            $('#analyzeBtn .btn-text').show();
+            $('#analyzeBtn .loading').hide();
+            $('#analyzeBtn').prop('disabled', false);
+        }
+    });
+}
+
+function displayResults(results) {
+    // Set prediction text and styling
+    $('#predictionText').text(results.prediction);
+    $('#riskLevel').text(results.risk_level);
+    $('#confidence').text((results.confidence * 100).toFixed(1) + '%');
+    $('#timestamp').text(results.timestamp);
+    
+    // Set badge color and icon
+    const badgeClass = 'badge bg-' + results.color;
+    $('#riskBadge').attr('class', badgeClass + ' fs-6 px-3 py-2');
+    
+    let icon = 'fa-heart';
+    if (results.color === 'warning') icon = 'fa-exclamation-triangle';
+    else if (results.color === 'danger') icon = 'fa-alert-triangle';
+    $('#riskIcon').attr('class', 'fas ' + icon + ' me-1');
+    
+    // Display recommendations
+    const recList = $('#recommendationsList');
+    recList.empty();
+    results.recommendations.forEach(function(rec, index) {
+        let listItemClass = 'list-group-item';
+        let iconClass = 'fas fa-check-circle text-success';
+        
+        if (rec.includes('⚠️')) {
+            listItemClass += ' list-group-item-warning';
+            iconClass = 'fas fa-exclamation-triangle text-warning';
+        } else if (rec.includes('🆘')) {
+            listItemClass += ' list-group-item-danger';
+            iconClass = 'fas fa-phone text-danger';
+        }
+        
+        recList.append(`
+            <div class="${listItemClass}">
+                <i class="${iconClass} me-2"></i>
+                ${rec}
+            </div>
+        `);
+    });
+    
+    // Display features analysis
+    displayFeatures(results.features);
+    
+    // Create confidence chart
+    createConfidenceChart(results.confidence);
+    
+    // Show emergency alert for high risk
+    if (results.color === 'danger') {
+        $('#emergencyAlert').show();
+    }
+    
+    // Show results section
+    $('#resultsSection').show();
+    
+    // Scroll to results
+    document.getElementById('resultsSection').scrollIntoView({
+        behavior: 'smooth'
+    });
+}
+
+function displayFeatures(features) {
+    const featuresDiv = $('#featuresAnalysis');
+    featuresDiv.empty();
+    
+    const importantFeatures = [
+        { key: 'compound_score', label: 'Overall Sentiment', format: 'decimal' },
+        { key: 'negative_word_count', label: 'Concerning Words', format: 'integer' },
+        { key: 'positive_word_count', label: 'Positive Words', format: 'integer' },
+        { key: 'word_count', label: 'Word Count', format: 'integer' }
+    ];
+    
+    importantFeatures.forEach(function(feature) {
+        if (features.hasOwnProperty(feature.key)) {
+            let value = features[feature.key];
+            if (feature.format === 'decimal') {
+                value = value.toFixed(3);
+            }
+            
+            let colorClass = 'text-primary';
+            if (feature.key === 'compound_score') {
+                colorClass = value < -0.1 ? 'text-danger' : value > 0.1 ? 'text-success' : 'text-warning';
+            } else if (feature.key === 'negative_word_count') {
+                colorClass = value > 2 ? 'text-danger' : value > 0 ? 'text-warning' : 'text-success';
+            } else if (feature.key === 'positive_word_count') {
+                colorClass = value > 1 ? 'text-success' : 'text-muted';
+            }
+            
+            featuresDiv.append(`
+                <div class="col-md-3 col-sm-6 mb-3">
+                    <div class="text-center p-3" style="background: #f8fafc; border-radius: 16px; border: 2px solid #e5e7eb; transition: all 0.3s ease;">
+                        <div class="h3 ${colorClass} mb-2" style="font-weight: 700;">${value}</div>
+                        <div class="small text-muted" style="font-weight: 500;">${feature.label}</div>
+                    </div>
+                </div>
+            `);
+        }
+    });
+}
+
+function createConfidenceChart(confidence) {
+    const ctx = document.getElementById('confidenceChart').getContext('2d');
+    
+    // Destroy existing chart if it exists
+    if (confidenceChart) {
+        confidenceChart.destroy();
+    }
+    
+    confidenceChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            datasets: [{
+                data: [confidence * 100, (1 - confidence) * 100],
+                backgroundColor: ['#06d6a0', '#e5e7eb'],
+                borderWidth: 0,
+                cutout: '75%'
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false
+                }
+            }
+        },
+        plugins: [{
+            beforeDraw: function(chart) {
+                const ctx = chart.ctx;
+                ctx.save();
+                const centerX = chart.chartArea.left + (chart.chartArea.right - chart.chartArea.left) / 2;
+                const centerY = chart.chartArea.top + (chart.chartArea.bottom - chart.chartArea.top) / 2;
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.font = 'bold 28px Inter';
+                ctx.fillStyle = '#06d6a0';
+                ctx.fillText((confidence * 100).toFixed(0) + '%', centerX, centerY - 8);
+                ctx.font = '14px Inter';
+                ctx.fillStyle = '#6b7280';
+                ctx.fillText('Confidence', centerX, centerY + 16);
+                ctx.restore();
+            }
+        }]
+    });
+}
+
+function analyzeAgain() {
+    $('#userText').val('');
+    $('#charCount').text('0');
+    $('#resultsSection').hide();
+    $('#emergencyAlert').hide();
+    document.getElementById('userText').scrollIntoView({
+        behavior: 'smooth'
+    });
+    $('#userText').focus();
+}
+
+function shareResults() {
+    // Create anonymous sharing text
+    const prediction = $('#predictionText').text();
+    const confidence = $('#confidence').text();
+    const shareText = `I used a mental health detection tool and received insights about my wellbeing. The analysis showed: ${prediction} (${confidence} confidence). Remember, this is just a tool - always consult professionals for mental health concerns. #MentalHealthAwareness`;
+    
+    if (navigator.share) {
+        navigator.share({
+            title: 'Mental Health Analysis Results',
+            text: shareText,
+            url: window.location.origin
+        });
+    } else {
+        // Fallback - copy to clipboard
+        navigator.clipboard.writeText(shareText).then(function() {
+            alert('Results copied to clipboard! You can now share them.');
+        });
+    }
+}
+</script>
+{% endblock %}
